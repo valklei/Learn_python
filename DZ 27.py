@@ -5,19 +5,30 @@
 # Введите числа: 4, 6, 3, 4, 2, 3, 9, 0, 7
 # Результат: 72
 
-list_numbers = [4, 6, 3, 4, 2, 3, 9, 0, 7]
+def input_integer_list():
+    while True:
+        try:
+            # Запрашиваем у пользователя ввод списка чисел
+            user_input = input("Введите список целых чисел, разделенных пробелами: ")
 
-def square(number: int) -> int:
-    if number % 2 == 0:
-        return number ** 2
-    return 0
+            # Разбиваем ввод на отдельные строки и пытаемся преобразовать их в целые числа
+            integer_list = [int(num) for num in user_input.split()]
 
-squared_numbers = sum(list(map(square, list_numbers)))
-print(squared_numbers)
+            # Если преобразование прошло успешно, возвращаем список целых чисел
+            return integer_list
+        except ValueError:
+            # Если возникла ошибка преобразования, выводим сообщение об ошибке и продолжаем запрашивать ввод
+            print("Ошибка: Введенные данные не являются целыми числами. Пожалуйста, попробуйте снова.")
 
-filter_numbers = list(filter(lambda x: x % 2 == 0, list_numbers))
-squared_numbers_1 = sum(list(map(square, filter_numbers)))
-print(squared_numbers_1)
+
+def sum_squares_even(data: list):
+    result = reduce(lambda x, y: x + y, filter(lambda x: x % 2 == 0, map(lambda x: x ** 2, data)))
+    return result
+
+
+numbers = input_integer_list()
+print("Вы ввели следующий список целых чисел:", numbers)
+print('Результат:', sum_squares_even(numbers))
 
 # 2. Напишите функцию, которая принимает на вход список функций и значение, а затем
 # применяет композицию этих функций к значению, возвращая конечный результат.
@@ -35,12 +46,9 @@ subtract_three = lambda x: x - 3
 functions = [add_one, double, subtract_three]
 user_num = 5
 
-def compose_functions(functions: list, num):
-    for function in functions:
-        num = function(num)
-    return num
-
 print(compose_functions(functions, user_num))
 
 reduce_func = reduce(lambda acc, func: func(acc), functions, user_num)
 print(reduce_func)
+
+
