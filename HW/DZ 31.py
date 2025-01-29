@@ -24,10 +24,10 @@ from typing import Callable
 def validate_args(arg_1_type, arg_2_type):
     def decorator(func: Callable) -> Callable:
         def wrapper(*args, **kwargs):
-            if not isinstance(args[0], arg_1_type):
-                return f"TypeError: Аргумент {args[0]} имеет неправильный тип <class 'str'>. Ожидается <class 'int'>."
-            if not isinstance(args[1], arg_2_type):
-                return f"TypeError: Аргумент {args[1]} имеет неправильный тип <class 'int'>. Ожидается <class 'str'>."
+            if not isinstance(args[0], arg_0_type):
+                return f"TypeError: Аргумент {args[0]} имеет неправильный тип {type(args[0])}. Ожидается {arg_0_type}"
+            if not isinstance(args[1], arg_1_type):
+                return f"TypeError: Аргумент {args[1]} имеет неправильный тип {type(args[1])}. Ожидается {arg_1_type}"
             else:
                 return func(*args, **kwargs)
 
@@ -42,45 +42,13 @@ def greet(age: int, name: str) -> str:
 
 
 print(greet(25, "Анна"))
-print("-" * 100)
+print("-" * 50)
 print(greet("25", "Анна"))
-print("-" * 100)
+print("-" * 50)
 print(greet(" ", "Анна"))
-print("-" * 100)
+print("-" * 50)
 print(greet(25, 34))
-Привет, Анна! Тебе
-25
-лет.
-----------------------------------------------------------------------------------------------------
-TypeError: Аргумент
-25
-имеет
-неправильный
-тип <
 
-
-class 'str'>.Ожидается < class 'int' >.
-
-
-----------------------------------------------------------------------------------------------------
-TypeError: Аргумент
-имеет
-неправильный
-тип <
-
-
-class 'str'>.Ожидается < class 'int' >.
-
-
-----------------------------------------------------------------------------------------------------
-TypeError: Аргумент
-34
-имеет
-неправильный
-тип <
-
-
-class 'int'>.Ожидается < class 'str' >.
 # %%
 # 2. Напишите декоратор log_args, который будет записывать аргументы и результаты вызовов функции в лог-файл. Каждый вызов функции должен быть записан на новой строке в формате "Аргументы: <аргументы>, Результат: <результат>". Используйте модуль logging для записи в лог-файл.
 #
