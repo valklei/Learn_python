@@ -15,5 +15,12 @@
       <jdbc-url>jdbc:mysql://ich-edit.edu.itcareerhub.de:3306/160924_social_blogs</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="ich_edit@ich-edit.edu.itcareerhub.de" uuid="dc534db0-efa2-4b01-bbda-eab2c4f7a024">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://ich-edit.edu.itcareerhub.de:3306/ich_edit</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
